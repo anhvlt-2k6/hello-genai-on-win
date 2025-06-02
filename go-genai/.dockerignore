@@ -1,0 +1,22 @@
+# Git
+.git
+.gitignore
+
+# Binaries and build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# macOS specific
+.DS_Store
+
+# Local development settings
+.env
+
+# IDE directories
+.idea/
+.vscode/

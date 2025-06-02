@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello-GenAI in Go</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🤖</span>
+                    <h1>Hello-GenAI in Go</h1>
+                </div>
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="container">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-title">AI Assistant</div>
+                    <div class="model-badge">
+                        <span id="model-name">Loading model...</span>
+                    </div>
+                    <button id="clear-chat" class="clear-button">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                
+                <div id="chat-box">
+                    <div class="message-container">
+                        <div class="bot-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <div class="bot-message">
+                                Hello! I'm your GenAI assistant. How can I help you today?
+                            </div>
+                            <div class="message-time">Just now</div>
+                        </div>
+                    </div>
+                    
+                    <div class="suggestions">
+                        <div class="suggestion">What can you do?</div>
+                        <div class="suggestion">Tell me about Docker</div>
+                        <div class="suggestion">How to use GenAI?</div>
+                        <div class="suggestion" id="show-example">Show structured example</div>
+                    </div>
+                </div>
+                
+                <div class="input-container">
+                    <textarea id="message-input" placeholder="Type your message here..." rows="1"></textarea>
+                    <button id="send-button" disabled>
+                        Send
+                        <span class="send-icon">➤</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">Fast Responses</h3>
+                    <p class="feature-description">
+                        Get quick and accurate answers to your questions with our optimized AI model.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Secure & Private</h3>
+                    <p class="feature-description">
+                        Your conversations are secure and private with our enhanced security measures.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍💻</div>
+                    <h3 class="feature-title">Developer Friendly</h3>
+                    <p class="feature-description">
+                        Built with developers in mind, with API documentation and easy integration.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="/health" class="footer-link">
+                        <i class="fas fa-heartbeat"></i> Health Status
+                    </a>
+                    <a href="/api/docs" class="footer-link">
+                        <i class="fas fa-book"></i> API Docs
+                    </a>
+                </div>
+                <div class="copyright">
+                    &copy; 2025 hello-genai | Powered by <span id="model-name-footer">AI Language Model</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/chat.js"></script>
+</body>
+</html>

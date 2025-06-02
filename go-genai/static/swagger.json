@@ -1,0 +1,285 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Hello-GenAI API",
+    "description": "API for interacting with the Hello-GenAI chat application. This interactive documentation allows you to try out the API endpoints directly from your browser.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Hello-GenAI Support",
+      "url": "https://github.com/yourusername/hello-genai"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "tags": [
+    {
+      "name": "Chat",
+      "description": "Chat with the AI assistant"
+    },
+    {
+      "name": "System",
+      "description": "System-related endpoints"
+    }
+  ],
+  "paths": {
+    "/api/chat": {
+      "post": {
+        "tags": ["Chat"],
+        "summary": "Send a message to the AI assistant",
+        "description": "Sends a message to the AI assistant and returns the response. The response will be formatted using markdown syntax for better readability.",
+        "operationId": "chatWithAI",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Message to send to the AI assistant",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "message"
+              ],
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "What is Docker?",
+                  "description": "The message text to send to the AI"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "string",
+                  "example": "# Docker\n\nDocker is a platform for developing, shipping, and running applications in **containers**. Containers are lightweight, portable, and isolated environments that package an application with all its dependencies.\n\n## Key Benefits\n\n- **Consistency**: Works the same across different environments\n- **Isolation**: Applications run in isolated environments\n- **Efficiency**: More resource-efficient than virtual machines\n- **Portability**: Run anywhere Docker is installed\n\n## Core Components\n\n- **Docker Engine**: The runtime that runs containers\n- **Docker Images**: Templates used to create containers\n- **Docker Containers**: Running instances of images\n- **Docker Registry**: Storage for Docker images (like Docker Hub)\n\n## Basic Commands\n\n```bash\n# Pull an image\ndocker pull nginx\n\n# Run a container\ndocker run -d -p 8080:80 nginx\n\n# List running containers\ndocker ps\n```"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Message is required and must be a string"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Rate limit exceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Failed to get response from LLM"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": ["System"],
+        "summary": "Get application health status",
+        "description": "Returns the health status of the application and its dependencies. This endpoint is useful for monitoring and health checks.",
+        "operationId": "getHealthStatus",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Health status",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "healthy",
+                  "description": "Overall health status of the application"
+                },
+                "llm_api": {
+                  "type": "string",
+                  "example": "ok",
+                  "description": "Status of the LLM API connection"
+                },
+                "timestamp": {
+                  "type": "string",
+                  "example": "2023-05-20T12:34:56Z",
+                  "description": "Current server time"
+                },
+                "version": {
+                  "type": "string",
+                  "example": "1.0.0",
+                  "description": "Application version"
+                },
+                "uptime": {
+                  "type": "string",
+                  "example": "1h 23m 45s",
+                  "description": "How long the application has been running"
+                },
+                "memory": {
+                  "type": "object",
+                  "description": "Memory usage statistics",
+                  "properties": {
+                    "alloc": {
+                      "type": "string",
+                      "example": "10.25 MB",
+                      "description": "Currently allocated memory"
+                    },
+                    "total_alloc": {
+                      "type": "string",
+                      "example": "15.75 MB",
+                      "description": "Total allocated memory since startup"
+                    },
+                    "sys": {
+                      "type": "string",
+                      "example": "20.50 MB",
+                      "description": "Memory obtained from the OS"
+                    },
+                    "num_gc": {
+                      "type": "integer",
+                      "example": 5,
+                      "description": "Number of garbage collections"
+                    }
+                  }
+                },
+                "go_version": {
+                  "type": "string",
+                  "example": "go1.20",
+                  "description": "Go runtime version"
+                },
+                "goroutines": {
+                  "type": "integer",
+                  "example": 10,
+                  "description": "Number of active goroutines"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/example": {
+      "get": {
+        "tags": ["System"],
+        "summary": "Get an example of structured formatting",
+        "description": "Returns an example of structured formatting using markdown. This is useful to see how the AI formats its responses.",
+        "operationId": "getFormattingExample",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Example response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "string",
+                  "example": "# Structured Response Example\n\nThis is an example of a **structured response** using markdown formatting. The AI assistant will format responses like this to improve readability.\n\n## Features\n\n- **Headers** for main points\n- **Bold text** for emphasis\n- *Italic text* for subtle emphasis\n- Bullet points for lists\n\n## Code Examples\n\n```python\ndef hello_world():\n    print('Hello, World!')\n```\n\n## Links\n\nYou can include [links to documentation](https://docs.docker.com)."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Example not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Example not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ping": {
+      "get": {
+        "tags": ["System"],
+        "summary": "Simple ping endpoint",
+        "description": "A simple endpoint that returns 'pong'. Useful for basic connectivity testing.",
+        "operationId": "pingServer",
+        "produces": [
+          "text/plain"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful ping",
+            "schema": {
+              "type": "string",
+              "example": "pong"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ChatRequest": {
+      "type": "object",
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "The message to send to the AI assistant"
+        }
+      }
+    },
+    "ChatResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "type": "string",
+          "description": "The AI assistant's response"
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "description": "Error message"
+        }
+      }
+    }
+  }
+}

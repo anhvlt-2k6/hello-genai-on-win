@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello-GenAI API Documentation</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@3.52.5/swagger-ui.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .topbar {
+            display: none;
+        }
+        .swagger-ui .info .title {
+            color: #0078D7;
+        }
+        .swagger-ui .btn.execute {
+            background-color: #0078D7;
+        }
+        .swagger-ui .btn.execute:hover {
+            background-color: #0063b1;
+        }
+        .swagger-ui .opblock.opblock-post {
+            border-color: #49cc90;
+            background: rgba(73, 204, 144, 0.1);
+        }
+        .swagger-ui .opblock.opblock-get {
+            border-color: #61affe;
+            background: rgba(97, 175, 254, 0.1);
+        }
+        .swagger-ui .opblock-summary-method {
+            font-weight: bold;
+        }
+        .swagger-ui table tbody tr td {
+            padding: 10px 0;
+        }
+        .swagger-ui .response-col_status {
+            font-weight: bold;
+        }
+        .swagger-ui .opblock-tag {
+            font-size: 20px;
+            margin: 10px 0 5px 0;
+            font-weight: bold;
+        }
+        .swagger-ui .opblock .opblock-summary-operation-id, 
+        .swagger-ui .opblock .opblock-summary-path, 
+        .swagger-ui .opblock .opblock-summary-path__deprecated {
+            font-size: 16px;
+        }
+        .swagger-ui .opblock-description-wrapper p, 
+        .swagger-ui .opblock-external-docs-wrapper p, 
+        .swagger-ui .opblock-title_normal p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        /* Custom header */
+        .custom-header {
+            background-color: #0078D7;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .custom-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .custom-header p {
+            margin: 10px 0 0 0;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-header">
+        <h1>Hello-GenAI API Documentation</h1>
+        <p>Interactive API documentation - Try out the endpoints directly from your browser</p>
+    </div>
+    <div id="swagger-ui"></div>
+    <script src="https://unpkg.com/swagger-ui-dist@3.52.5/swagger-ui-bundle.js"></script>
+    <script src="https://unpkg.com/swagger-ui-dist@3.52.5/swagger-ui-standalone-preset.js"></script>
+    <script>
+        window.onload = function() {
+            const ui = SwaggerUIBundle({
+                url: "/static/swagger.json",
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ],
+                layout: "StandaloneLayout",
+                docExpansion: "list",
+                defaultModelsExpandDepth: 1,
+                defaultModelExpandDepth: 1,
+                displayRequestDuration: true,
+                showExtensions: true,
+                showCommonExtensions: true,
+                supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+            });
+            window.ui = ui;
+        };
+    </script>
+</body>
+</html>
