@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Hello-GenAI API",
+    "title": "Simple GenAI API",
     "description": "A simple API for interacting with GenAI language models",
     "version": "1.0.0"
   },

@@ -11,6 +11,18 @@ The application uses the following environment variables defined in the `.env` f
 
 By default, `ai/smollm2` is used to make sure your GenAI deployment is functional. You can try pulling other models on [Docker Model on Docker Hub](https://hub.docker.com/u/ai) and edit the model in file `.env`.
 
+Moreover, I have rewrite the `docker-compose.yml` for only accessible via localhost. You can allow for any network interface by editing this following line
+
+```yml
+7      - "127.0.0.1:8080:8080"
+```
+
+to 
+
+```yml
+7      - "8080:8080"
+```
+
 ## Quick Start
 
 1. Clone the repository:
@@ -32,5 +44,5 @@ run.cmd
 
 - Windows 11 (recommended 23H2 and later). Windows 10 is still usable, but may experience lagging or InterNet disconnection while using.
 - WSL2. Make sure you have updated to the latest version and set `wsl --set-default-version 2` as default.
-  * If you don't know what WSL is, you can try [install with this guide](https://learn.microsoft.com/en-us/windows/wsl/install) and this [Getting Started Guide](https://youtu.be/_fntjriRe48?si=VexhJm6bb44m3CbF)
+  - If you don't know what WSL is, you can try [install with this guide](https://learn.microsoft.com/en-us/windows/wsl/install) and this [Getting Started Guide](https://youtu.be/_fntjriRe48?si=VexhJm6bb44m3CbF)
 - Make sure Docker operates on WSL2 with [GPU support](https://docs.docker.com/desktop/features/gpu/).
