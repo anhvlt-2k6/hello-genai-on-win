@@ -8,7 +8,7 @@ The application uses the following environment variables:
 
 - `LLM_BASE_URL`: The base URL of the LLM API
 - `LLM_MODEL_NAME`: The model name to use
-- `PORT`: The port to run the application on (default: 8081)
+- `PORT`: The port to run the application on (default: 8080)
 - `DEBUG`: Set to "true" to enable debug mode (default: "false")
 - `LOG_LEVEL`: Set the logging level (default: "INFO")
 

@@ -28,8 +28,8 @@ COPY static/ static/
 # Switch to non-root user
 USER nomadicmehul
 
-# Expose port 8081 (matching docker-compose.yml)
-EXPOSE 8081
+# Expose port 8080 (matching docker-compose.yml)
+EXPOSE 8080
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -37,7 +37,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:8081/health || exit 1
+  CMD curl -f http://localhost:8080/health || exit 1
 
 # Run the application
 CMD ["python", "app.py"]

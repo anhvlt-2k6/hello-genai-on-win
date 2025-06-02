@@ -200,7 +200,7 @@ if __name__ == '__main__':
     configure_logging()
     
     # Validate environment
-    port = int(os.getenv("PORT", 8081))
+    port = int(os.getenv("PORT", 8080))
     env_valid = validate_environment()
     
     if not env_valid:
